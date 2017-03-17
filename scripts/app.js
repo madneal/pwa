@@ -33,6 +33,9 @@
    * Event listeners for UI elements
    *
    ****************************************************************************/
+  document.addEventListener( "DOMContentLoaded", function() {
+      app.setDefaultCity();
+  });
 
   document.getElementById('butRefresh').addEventListener('click', function() {
     // Refresh all of the forecasts
@@ -98,6 +101,18 @@
     } else {
       app.addDialog.classList.remove('dialog-container--visible');
     }
+  };
+
+  app.setDefaultCity = function() {
+    var key = '2151849';
+    var label = 'Shanghai';
+    if (!app.selectedCities) {
+      app.selectedCities = [];
+    }
+    app.getForecast(key, label);
+    // TODO push the selected city to the array and save here
+    app.selectedCities.push({key: key, label: label});
+    app.saveSelectedCities();
   };
 
   // Updates a weather card with the latest weather forecast. If the card
