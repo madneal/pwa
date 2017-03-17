@@ -51,9 +51,9 @@
     app.toggleAddDialog(true);
   });
 
-  document.getElementById('butRemove').addEventListener('click', function() {
-    app.toggleAddDialog(true);
-  })
+  // document.getElementById('butRemove').addEventListener('click', function() {
+  //   app.toggleAddDialog(true);
+  // })
 
   document.getElementById('butAddCity').addEventListener('click', function() {
     // Add the newly selected city
