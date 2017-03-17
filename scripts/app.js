@@ -44,9 +44,13 @@
     app.toggleAddDialog(true);
   });
 
+  document.getElementById('butRemove').addEventListener('click', function() {
+    app.toggleAddDialog(true);
+  })
+
   document.getElementById('butAddCity').addEventListener('click', function() {
     // Add the newly selected city
-    var select = document.getElementById('selectCityToAdd');
+    var select = document.getElementById('selectCity');
     var selected = select.options[select.selectedIndex];
     var key = selected.value;
     var label = selected.textContent;
@@ -60,6 +64,20 @@
     app.saveSelectedCities();
     app.toggleAddDialog(false);
   });
+
+  document.getElementById('butRemoveCity').addEventListener('click', function() {
+    var select = document.getElementById('selectCity');
+    var selected = select.options[select.selectedIndex];
+    var key = selected.value;
+    var label = selected.textContent;
+    if (!app.selectedCities || app.selectedCities.length === 0) {
+      alert('There is no city to remove!');
+    }
+    app.delForecast(key);
+    app.delSelectedCities({key: key, label: label});
+    app.saveSelectedCities();
+    app.toggleAddDialog(false);
+  })
 
   document.getElementById('butAddCancel').addEventListener('click', function() {
     // Close the add new city dialog
@@ -116,6 +134,7 @@
     }
     cardLastUpdatedElem.textContent = data.created;
 
+    card.querySelector('.city-key').textContent = data.key;
     card.querySelector('.description').textContent = current.text;
     card.querySelector('.date').textContent = current.date;
     card.querySelector('.current .icon').classList.add(app.getIconClass(current.code));
@@ -205,6 +224,28 @@
     request.open('GET', url);
     request.send();
   };
+
+  app.delForecast = function(key) {
+    var mainDom = document.querySelector('.main');
+    var forecastDoms = document.querySelectorAll('.main .card');
+    forecastDoms = Array.prototype.slice.call(forecastDoms, 1, forecastDoms.length);
+    forecastDoms.forEach(function(dom) {
+      var domKey = dom.querySelector('.city-key').textContent;
+      if (key === domKey) {
+        mainDom.removeChild(dom);
+      }
+    })
+  };
+
+  app.delSelectedCities = function(selectCity) {
+    var selectedCities = app.selectedCities;
+    for (var i = 0; i < selectedCities.length; i++) {
+      var index = selectedCities.indexOf(selectCity);
+      if (index !== -1) {        
+        app.selectedCities.splice(index, 1);
+      }
+    }
+  }
 
   // Iterate all of the cards and attempt to get the latest forecast data
   app.updateForecasts = function() {

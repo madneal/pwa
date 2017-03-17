@@ -33,6 +33,7 @@
     <h1 class="header__title">Weather PWA</h1>
     <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
     <button id="butAdd" class="headerButton" aria-label="Add"></button>
+    <button id="butRemove" class="headerButton" aria-label="remove"></button>
   </header>
 
   <main class="main">
@@ -137,9 +138,9 @@
 
   <div class="dialog-container">
     <div class="dialog">
-      <div class="dialog-title">Add new city</div>
+      <div class="dialog-title">Add or Remove city</div>
       <div class="dialog-body">
-        <select id="selectCityToAdd">
+        <select id="selectCity">
           <!-- Values map to Yahoo Weather API Where On Earth Identifiers (WOEIDs).
                https://developer.yahoo.com/weather/documentation.html#req -->
           <option value="2357536">Austin, TX</option>
@@ -153,6 +154,7 @@
       </div>
       <div class="dialog-buttons">
         <button id="butAddCity" class="button">Add</button>
+        <button id="butRemoveCity" class="button">Remove</button>
         <button id="butAddCancel" class="button">Cancel</button>
       </div>
     </div>
