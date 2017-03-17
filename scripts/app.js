@@ -158,7 +158,7 @@
     card.querySelector('.date').textContent = current.date;
     card.querySelector('.current .icon').classList.add(app.getIconClass(current.code));
     card.querySelector('.current .temperature .value').textContent =
-      Math.round(current.temp);
+      Math.round((current.temp - 32) / 1.8);
     card.querySelector('.current .sunrise').textContent = sunrise;
     card.querySelector('.current .sunset').textContent = sunset;
     card.querySelector('.current .humidity').textContent =
@@ -209,7 +209,7 @@
     var url = 'https://query.yahooapis.com/v1/public/yql?format=json&q=' +
         statement;
     // TODO add cache logic here
-    if ('caches' in window) {
+    if ('caches' in window && app.selectedCities.indexOf(key) !== -1) {
       caches.match(url).then(function(response) {
         if (response) {
           response.json().then(function updateFromCache(json) {
