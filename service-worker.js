@@ -46,7 +46,7 @@ self.addEventListener('activate', function(e) {
 self.addEventListener('fetch', function(e) {  
   console.log('[ServiceWorker] Fetch', e.request.url);  
   var dataUrl = 'https://publicdata-weather.firebaseio.com/';  
-  if (e.request.url.indexOf(dataUrl) === 0) {  
+  if (e.request.url.indexOf(dataUrl) !== -1) {  
     // Put data handler code here  
     e.respondWith(
     	fetch(e.request)
