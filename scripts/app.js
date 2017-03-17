@@ -173,9 +173,9 @@
           app.daysOfWeek[(i + today) % 7];
         nextDay.querySelector('.icon').classList.add(app.getIconClass(daily.code));
         nextDay.querySelector('.temp-high .value').textContent =
-          Math.round(daily.high);
+          Math.round((daily.high - 32) / 1.8);
         nextDay.querySelector('.temp-low .value').textContent =
-          Math.round(daily.low);
+          Math.round((daily.low - 32) / 1.8);
       }
     }
     if (app.isLoading) {
