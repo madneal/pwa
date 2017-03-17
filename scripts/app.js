@@ -33,10 +33,14 @@
    * Event listeners for UI elements
    *
    ****************************************************************************/
-  document.addEventListener( "DOMContentLoaded", function() {
-      app.setDefaultCity();
-  });
+  // document.getElementById().addEventListener( "onload", function() {
+  //     app.setDefaultCity();
+  // });
 
+  window.onload = function() {
+    app.setDefaultCity();
+  };
+  
   document.getElementById('butRefresh').addEventListener('click', function() {
     // Refresh all of the forecasts
     app.updateForecasts();
