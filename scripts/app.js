@@ -375,13 +375,14 @@
     app.selectedCities.forEach(function(city) {
       app.getForecast(city.key, city.label);
     });
-  } else {
-    app.updateForecastCard(initialWeatherForecast);
-    app.selectedCities = [
-      {key: initialWeatherForecast.key, label: initialWeatherForecast.label}
-    ];
-    app.saveSelectedCities();
-  }
+  } 
+  // else {
+  //   app.updateForecastCard(initialWeatherForecast);
+  //   app.selectedCities = [
+  //     {key: initialWeatherForecast.key, label: initialWeatherForecast.label}
+  //   ];
+  //   app.saveSelectedCities();
+  // }
 
   // TODO add service worker code here
   if('serviceWorker' in navigator) {  
