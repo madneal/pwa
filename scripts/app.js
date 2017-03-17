@@ -216,10 +216,11 @@
           results.created = response.query.created;
           app.updateForecastCard(results);
         }
-      } else {
-        // Return the initial weather forecast since no data is available.
-        app.updateForecastCard(initialWeatherForecast);
-      }
+      } 
+      // else {
+      //   // Return the initial weather forecast since no data is available.
+      //   app.updateForecastCard(initialWeatherForecast);
+      // }
     };
     request.open('GET', url);
     request.send();
