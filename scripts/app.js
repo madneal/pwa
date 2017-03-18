@@ -210,9 +210,11 @@
         statement;
     // TODO add cache logic here
     if ('caches' in window && app.selectedCities.indexOf(key) !== -1) {
-      caches.match(url).then(function(response) {
+      caches.match(url)
+      .then(function(response) {
         if (response) {
-          response.json().then(function updateFromCache(json) {
+          response.json()
+          .then(function updateFromCache(json) {
             var results = json.query.results;
             results.key = key;
             results.label = label;
