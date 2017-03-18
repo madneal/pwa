@@ -91,6 +91,10 @@
     app.toggleAddDialog(false);
   });
 
+  document.getElementByClassName('.main').addEventListener('touched', function() {
+    app.toggleAddDialog(true);
+  })
+
 
   /*****************************************************************************
    *
