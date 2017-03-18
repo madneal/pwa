@@ -91,11 +91,6 @@
     app.toggleAddDialog(false);
   });
 
-  document.getElementByClassName('.main').addEventListener('touched', function() {
-    app.toggleAddDialog(true);
-  })
-
-
   /*****************************************************************************
    *
    * Methods to update/refresh the UI
