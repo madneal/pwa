@@ -84,7 +84,7 @@
     app.delSelectedCities({key: key, label: label});
     app.saveSelectedCities();
     app.toggleAddDialog(false);
-  })
+  });
 
   document.getElementById('butAddCancel').addEventListener('click', function() {
     // Close the add new city dialog
@@ -107,14 +107,18 @@
   };
 
   app.setDefaultCity = function() {
-    var key = '2151849';
-    var label = 'Shanghai';
+    var defaultCity = {
+      key: '2151849',
+      label: 'Shanghai'
+    };
     if (!app.selectedCities) {
       app.selectedCities = [];
     }
     app.getForecast(key, label);
     // TODO push the selected city to the array and save here
-    app.selectedCities.push({key: key, label: label});
+    if (app.indexOfArr(app.selectedCities, defaultCity) === -1) {
+      app.selectedCities.push(defaultCity);
+    }
     app.saveSelectedCities();
   };
 
@@ -208,7 +212,7 @@
     var url = 'https://query.yahooapis.com/v1/public/yql?format=json&q=' +
         statement;
     // TODO add cache logic here
-    if ('caches' in window && app.selectedCities.indexOf(key) !== -1) {
+    if ('caches' in window) {
       caches.match(url)
       .then(function(response) {
         if (response) {
