@@ -45,7 +45,7 @@ self.addEventListener('activate', function(e) {
 
 self.addEventListener('fetch', function(e) {  
   console.log('[ServiceWorker] Fetch', e.request.url);  
-  var dataUrl = 'https://publicdata-weather.firebaseio.com/';  
+  var dataUrl = 'https://query.yahooapis.com/v1/public/yql';  
   if (e.request.url.indexOf(dataUrl) !== -1) {  
     // Put data handler code here  
     e.respondWith(
@@ -54,7 +54,7 @@ self.addEventListener('fetch', function(e) {
     		return caches.open(dataCacheName)
     			.then(function(cache) {
     				cache.put(e.request.url, response.clone());
-    				console.log('[ServiceWorker] Fetched&Cached Data');
+    				console.log('[ServiceWorker] Fetched & Cached Data');
     				return response;
     			});
     	}));
