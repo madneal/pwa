@@ -346,6 +346,10 @@ body {
     background-image: url("../images/thunderstorm.png"); }
 
 @media (max-width: 450px) {
+  .fork-me{
+    width: 5rem;
+    height: 5rem;
+  }
   .weather-forecast .date, .weather-forecast .description {
     font-size: 0.9em; }
   .weather-forecast .current .icon {
