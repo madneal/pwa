@@ -114,7 +114,7 @@
     if (!app.selectedCities) {
       app.selectedCities = [];
     }
-    app.getForecast(key, label);
+    app.getForecast(defaultCity);
     // TODO push the selected city to the array and save here
     if (app.indexOfArr(app.selectedCities, defaultCity) === -1) {
       app.selectedCities.push(defaultCity);
