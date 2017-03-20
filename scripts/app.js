@@ -255,20 +255,30 @@
       if (key === domKey) {
         mainDom.removeChild(dom);
       }
-    })
+    });
+  };
+
+  // To detect if the obj exsits in arr
+  app.indexOfArr = function(arr, obj) {
+    for (var i in arr) {
+      if (arr[i].key === obj.key && arr[i].label === obj.label) {
+        return i;
+      }
+    }
+    return -1;
   };
 
   app.delSelectedCities = function(selectCity) {
     var selectedCities = app.selectedCities;
     for (var i = 0; i < selectedCities.length; i++) {
-      var index = selectedCities.indexOf(selectCity);
+      var index = app.indexOfArr(selectedCities, selectCity);
       if (index !== -1) {        
         app.selectedCities.splice(index, 1);
       }
-      var selectedCities = JSON.stringify(app.selectedCities);
-      localStorage.selectedCities = selectedCities;
     }
-  }
+    selectedCities = JSON.stringify(app.selectedCities);
+    localStorage.selectedCities = selectedCities;
+  };
 
   // Iterate all of the cards and attempt to get the latest forecast data
   app.updateForecasts = function() {
