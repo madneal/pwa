@@ -260,6 +260,8 @@
         mainDom.removeChild(dom);
       }
     });
+    // remove app.visibleCards
+    delete app.visibleCards[key];
   };
 
   // To detect if the obj exsits in arr
