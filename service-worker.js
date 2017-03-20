@@ -1,4 +1,4 @@
-var cacheName = 'weatherPWA-step-6-1';
+var cacheName = 'weatherPWA-resource';
 var dataCacheName = 'weatherData-v1';
 var filesToCache = [
   '/',
