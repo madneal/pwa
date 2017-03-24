@@ -173,7 +173,7 @@
       var daily = data.channel.item.forecast[i];
       if (daily && nextDay) {
         nextDay.querySelector('.date').textContent =
-          app.daysOfWeek[(i + today) % 7];
+          app.daysOfWeek[(i - 1 + today) % 7];
         nextDay.querySelector('.icon').classList.add(app.getIconClass(daily.code));
         nextDay.querySelector('.temp-high .value').textContent =
           Math.round((daily.high - 32) / 1.8);
