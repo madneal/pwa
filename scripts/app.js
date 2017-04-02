@@ -155,10 +155,10 @@
     today = today.getDay();
     for (var i = 0; i < 7; i++) {
       var nextDay = nextDays[i];
-      var daily = data.channel.item.forecast[i];
+      var daily = data.channel.item.forecast[i + 1];
       if (daily && nextDay) {
         nextDay.querySelector('.date').textContent =
-          app.daysOfWeek[(today === 0 ? (i + today) : (i - 1 + today) % 7];
+          app.daysOfWeek[(i + 1 + today) % 7];
         nextDay.querySelector('.icon').classList.add(app.getIconClass(daily.code));
         nextDay.querySelector('.temp-high .value').textContent =
           Math.round((daily.high - 32) / 1.8);
