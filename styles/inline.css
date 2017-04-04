@@ -331,8 +331,8 @@ body {
 
 @media (max-width: 450px) {
   .fork-me{
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
   }
   .weather-forecast .date, .weather-forecast .description {
     font-size: 0.9em; }
